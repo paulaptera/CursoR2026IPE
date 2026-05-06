@@ -1,26 +1,38 @@
 ---
 title: "ejemplo_quarto"
-format: pdf
+author: "PaulaGG"
+format: typst
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+# Mi informe del datasest Nigro et al.
 
 ```{r}
-1 + 1
-```
+#| echo: FALSE
+#| message: FALSE
+#| warning: FALSE
+#| label: "paquetes"
 
-You can add options to executable code like this
+library("tidyverse")
+library("here")
+
+
+```
 
 ```{r}
-#| echo: false
-2 * 2
+#| echo: FALSE
+
+data <- read_csv(here("data/data_clean.csv"))
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+La media de frutos general es `r mean(data$count, na.rm =TRUE)`
+
+```{r}
+#| echo: FALSE
+#| fig-cap: "Figura 1: plot"
+
+ggplot(data, aes(y = count, x= year))+
+         geom_point()
+```
+
