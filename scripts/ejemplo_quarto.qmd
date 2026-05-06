@@ -15,9 +15,23 @@ editor: visual
 
 library("tidyverse")
 library("here")
-
+library("ggplot2")
+library("renv")
 
 ```
+
+```{r}
+#| echo: FALSE
+
+renv::init()
+renv::snapshot()
+#renv::restore()
+
+```
+
+init es para simplemente iniciar el renv
+snapshot para guardar una copia de todas las versiones de los paquetes que usas en tu código
+restore para que si se lo pasas a alguien cargue tus paquetes
 
 ```{r}
 #| echo: FALSE
